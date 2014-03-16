@@ -1,7 +1,11 @@
 package com.findmyprayer;
 
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,6 +15,8 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	
 	Button searchButton;
+	GPSTracker gps;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +29,17 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getBaseContext(), "Testing testing", Toast.LENGTH_SHORT).show();
-			}
+				Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
+
+				//TODO check if gps is on and use gps.showSettingsAlert() if it isn't
+				//Assume gps is on
+				gps = new GPSTracker(getBaseContext());
+				if(gps.canGetLocation()){
+					myIntent.putExtra("latitude", gps.getLatitude());
+					myIntent.putExtra("longitude", gps.getLongitude());
+					gps.stopUsingGPS();
+				}
+				MainActivity.this.startActivity(myIntent);			}
 		});
 	}
 
