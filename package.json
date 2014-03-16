@@ -1,0 +1,10 @@
+{
+    "name": "location-provider-service",
+    "description": "Localtion Provider Service and API for findMyMusalla",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "3.x", 
+        "mongodb": "x"
+    }
+}
