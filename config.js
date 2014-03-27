@@ -37,9 +37,9 @@ var PRODUCTION = {
 var DEVELOPMENT = {
 	mongo: {
 		host: "127.0.0.1",
-		name: "icccms_mongo",
-		user: "icccms",
-		pass: "icccms",
+		name: "findmyprayer",
+		user: "admin",
+		pass: "d4t4b4s3",
 		port: 27017
 	},
 	redis: {
