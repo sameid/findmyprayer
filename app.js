@@ -4,10 +4,8 @@ var http = require('http');
 
 var app = express();
 app.configure(function () {
-    app.use(express.logger('dev'));
-   	// app.use(express.json());
-    // app.use(express.urlencoded());
-    app.use(express.bodyParser());
+    app.use(express.urlencoded())
+	app.use(express.json())
 });
 
 app.post('/api/1/location', location.findAllByLocation);

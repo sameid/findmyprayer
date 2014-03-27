@@ -27,7 +27,11 @@ exports.findAllByLocation = function(req, res){
 	var latitude1 = req.body.latitude;
 	var rad = req.body.radius;
 	if (typeof(rad) == 'undefined') rad = 10;
-	if (typeof(longitude1) == 'undefined' || typeof(latitude1) == 'undefined') res.send(403, {error: 'data POSTed was invalid Luke sucks'});
+	if (typeof(longitude1) == 'undefined' || typeof(latitude1) == 'undefined'){
+	 	res.send(403, {
+			error: 'invalid data on payload'
+		});
+	}
 
 
 	db.collection('locations' , function (err, collection){
@@ -44,7 +48,8 @@ exports.findAllByLocation = function(req, res){
 				},
 
 				function(err){
-					res.send(200, ritems);
+					return res.send(200, ritems);
+
 				}
 
 			);
