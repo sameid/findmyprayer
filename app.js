@@ -4,17 +4,16 @@ var http = require('http');
 
 var app = express();
 app.configure(function () {
-    app.use(express.logger('dev'));
-   	//app.use(express.json());
-    //app.use(express.urlencoded());
-    app.use(express.bodyParse());
+    app.use(express.urlencoded())
+	app.use(express.json())
 });
 
-app.get('/location', location.findByLocation);
-app.get('/location', location.findAll);
-app.get('/location/:publicId', location.find);
-app.post('/location', location.create);
-app.put('/location/:publicId', location.edit);
-app.delete('/location/:publicId', location.del);
+app.post('/api/1/location', location.findAllByLocation);
+app.get('/api/1/location', location.findAll);
+app.get('/api/1/location/:publicId', location.find);
+app.post('/api/1/location', location.create);
+app.put('/api/1/location/:publicId', location.update);
+app.delete('/api/1/location/:publicId', location.remove);
 
-app.listen(8080);
+
+app.listen(3000);
